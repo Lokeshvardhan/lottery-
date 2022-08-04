@@ -10,12 +10,14 @@ function App() {
   const [ether, setEther] = useState('');
   const [message, setMessage] = useState('');
   useEffect(()=>{
+    console.log('hey');
     const getManager = async() =>{
       const managerContract = await lottery.methods.manager().call();
-      //console.log('manager', managerContract);
+      console.log('manager', managerContract);
       setManager(managerContract);
       const playersContract = await lottery.methods.getPlayers().call();
       const balanceContract = await web3.eth.getBalance(lottery.options.address);
+      //console.log('methods', web3.eth.methods());
       //console.log(balanceContract);
       setBalance(balanceContract);
       setPlayers(playersContract);
